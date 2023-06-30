@@ -36,13 +36,14 @@ public class Preke {
 	
 	@Column(name="unit")
 	private String matvnt;
-	
+
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="preke_location", 
-		joinColumns=@JoinColumn(name="location_id"), 
-		inverseJoinColumns=@JoinColumn(name="preke_id"))		
-	@Column(name="location_id")
-	private List<Location> locations;
+    @JoinTable(
+        name = "preke_location",
+        joinColumns = @JoinColumn(name = "preke_id"),
+        inverseJoinColumns = @JoinColumn(name = "location_id")
+    )	
+    private List<Location> locations;
 
 	public Preke(Long id, String artikelis, String pavadinimas, String aprasymas, int kiekis, String matvnt,
 			List<Location> locations) {
