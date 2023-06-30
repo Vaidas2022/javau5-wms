@@ -1,4 +1,4 @@
-package lt.codeacademy.javau5.wms.entities;
+package lt.codeacademy.javau5.wms.repolayer;
 
 import java.util.List;
 

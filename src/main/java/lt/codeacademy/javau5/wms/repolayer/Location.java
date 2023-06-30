@@ -1,15 +1,13 @@
-package lt.codeacademy.javau5.wms.entities;
+package lt.codeacademy.javau5.wms.repolayer;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -42,6 +40,7 @@ public class Location {
 	}
 	
 	public Location() {}
+		
 
 	public Long getId() {
 		return id;
