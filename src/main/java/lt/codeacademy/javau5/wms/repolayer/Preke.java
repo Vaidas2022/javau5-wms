@@ -1,10 +1,11 @@
 package lt.codeacademy.javau5.wms.repolayer;
 
-import java.util.List;
+import java.util.*;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,7 +38,7 @@ public class Preke {
 	@Column(name="unit")
 	private String matvnt;
 
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany
     @JoinTable(
         name = "preke_location",
         joinColumns = @JoinColumn(name = "preke_id"),
@@ -54,6 +55,14 @@ public class Preke {
 		this.kiekis = kiekis;
 		this.matvnt = matvnt;
 		this.locations = locations;
+	}
+	
+	public Preke(String artikelis, String pavadinimas, String aprasymas, int kiekis, String matvnt) {
+		this.artikelis = artikelis;
+		this.pavadinimas = pavadinimas;
+		this.aprasymas = aprasymas;
+		this.kiekis = kiekis;
+		this.matvnt = matvnt;
 	}
 	
 	public Preke() {}
@@ -107,6 +116,7 @@ public class Preke {
 	}
 
 	public List<Location> getLocations() {
+		if(locations == null ) locations = new ArrayList<>();
 		return locations;
 	}
 
@@ -118,6 +128,10 @@ public class Preke {
 	public String toString() {
 		return "Preke [id=" + id + ", artikelis=" + artikelis + ", pavadinimas=" + pavadinimas + ", aprasymas="
 				+ aprasymas + ", kiekis=" + kiekis + ", matvnt=" + matvnt + "]";
+	}
+
+	public void addLocation(Location location) {
+		getLocations().add(location);		
 	}
 	
 	
